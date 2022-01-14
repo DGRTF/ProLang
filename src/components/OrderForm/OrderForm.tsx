@@ -6,10 +6,15 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Form } from 'react-bootstrap';
 import './OrderForm.scss';
-import { CreateOrderModel, OrdersClient } from '../../api/generate';
-import { queryProvider } from '../../api/queryProider';
+import { createOrder } from '../../api/Orders/orders';
 
+export interface CreateOrderModel {
+  customer?: string;
+  description?: string;
 
+  /** @format double */
+  costs: number;
+}
 
 export default function OrderForm() {
   const order = useSelector<storeType, ICurrentOrder>((state) => state.currentOrder)
@@ -24,8 +29,8 @@ export default function OrderForm() {
       description: Yup.string(),
       customer: Yup.string(),
     }),
-    onSubmit: values => {
-      queryProvider(OrdersClient).createOrder(new CreateOrderModel(values));
+    onSubmit: async values => {
+      await createOrder({ ...values });
     },
   });
 
