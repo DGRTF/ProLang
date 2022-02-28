@@ -28,8 +28,8 @@ export const currentOrder = createSlice({
       state.customer = action.payload;
     },
   },
-})
+});
 
-export const { setCosts, setCustomer, setDescription } = currentOrder.actions
+export const { setCosts, setCustomer, setDescription } = currentOrder.actions;
 
-export default currentOrder.reducer
+export default currentOrder.reducer;

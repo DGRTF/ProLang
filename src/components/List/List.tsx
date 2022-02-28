@@ -1,6 +1,6 @@
-import React, { Children } from "react";
-import { ListProps } from "./ListInterfaces";
-import "./List.scss";
+import React, { Children } from 'react';
+import { ListProps } from './ListInterfaces';
+import './List.scss';
 
 export default function List(props: ListProps) {
   return (

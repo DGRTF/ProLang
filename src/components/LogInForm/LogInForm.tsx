@@ -1,54 +1,53 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './RegistrationForm.scss';
-import RegistrationFormProps, { RegisterUser } from './RegistrationFormProps';
+import './LogInForm.scss';
+import { ILogInFormProps, ILoginUserModel } from './LogInFormInterfaces';
 import TextField from '../TextField/TextField';
 import Button from '../Button/Button';
 import Form from '../Form/Form';
 import {
-  passwordErrorMessage, passwordMaxLength, passwordMaxLengthErrorMessage, passwordMinLength, passwordMinLengthErrorMessage, passwordRegex,
+  passwordMaxLength,
+  passwordMaxLengthErrorMessage,
+  passwordMinLength,
+  passwordMinLengthErrorMessage,
 } from '../common/passwordConstants';
 
-export default function RegistrationForm(props: RegistrationFormProps) {
-  const formik = useFormik<RegisterUser>({
+/**
+ * Форма входа
+ * @param props модель для формы
+ */
+export default function LogInForm(props: ILogInFormProps) {
+  const formik = useFormik<ILoginUserModel>({
     validateOnChange: true,
     initialValues: { email: '', password: '' },
     validationSchema: Yup.object().shape({
       email: Yup.string().email('Invalid Email'),
       password: Yup.string()
         .min(passwordMinLength, passwordMinLengthErrorMessage)
-        .matches(
-          passwordRegex,
-          passwordErrorMessage,
-        )
         .max(passwordMaxLength, passwordMaxLengthErrorMessage),
     }),
     onSubmit: async (values) => {
-      await props.registrationUser(values);
+      await props.logInUser(values);
     },
   });
 
-  const inputEmail = (ev: React.FormEvent<HTMLInputElement>) => {
-    formik.handleChange(ev);
-  };
-
-  const inputPassword = (ev: React.FormEvent<HTMLInputElement>) => {
+  const inputField = (ev: React.FormEvent<HTMLInputElement>) => {
     formik.handleChange(ev);
   };
 
   return (
-    <div className="registration-form">
+    <div className="login-form">
       <Form
         onSubmit={formik.handleSubmit}
-        header="Регистрация"
-        buttonsSection={<Button name="Submit" />}
+        header="Войти"
+        buttonsSection={<Button name="Войти" />}
       >
         <TextField
           header="Email"
           type="email"
           nameField="email"
-          onInput={inputEmail}
+          onInput={inputField}
           subText={{ type: 'invalid', text: formik.errors.email }}
         />
         <TextField
@@ -56,7 +55,7 @@ export default function RegistrationForm(props: RegistrationFormProps) {
           type="password"
           nameField="password"
           required
-          onInput={inputPassword}
+          onInput={inputField}
           subText={{ type: 'invalid', text: formik.errors.password }}
         />
       </Form>

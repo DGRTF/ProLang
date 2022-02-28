@@ -1,7 +1,12 @@
-import React, { FormEventHandler } from "react";
-import "./TextField.scss";
+import React, { FormEventHandler } from 'react';
+import './TextField.scss';
 
-type inputType = "password" | "text" | "email";
+type inputType = 'password' | 'text' | 'email';
+
+export interface ITextFieldSubText {
+  text?: string;
+  type: 'invalid' | 'valid';
+}
 
 export interface TextFieldProps {
   onInput?: FormEventHandler<HTMLInputElement>;
@@ -14,30 +19,25 @@ export interface TextFieldProps {
   subText?: ITextFieldSubText;
 }
 
-export interface ITextFieldSubText {
-  text?: string;
-  type: "invalid" | "valid";
-}
-
 export default function TextField(props: TextFieldProps) {
   return (
     <label className="text-field">
-      {props.header ?? ""}
+      {props.header ?? ''}
       <input
         name={props.nameField}
         className="text-field__field"
         readOnly={props.readonly ?? false}
         required={props.required ?? false}
-        defaultValue={props.defaultValue ?? ""}
-        type={props.type ?? "text"}
+        defaultValue={props.defaultValue ?? ''}
+        type={props.type ?? 'text'}
         onInput={props.onInput}
       />
       <span
         className={`text-field__subtext${
-          props.subText?.type === "invalid" ? "_red" : ""
+          props.subText?.type === 'invalid' ? '_red' : ''
         }`}
       >
-        {props.subText?.text ?? ""}
+        {props.subText?.text ?? ''}
       </span>
     </label>
   );

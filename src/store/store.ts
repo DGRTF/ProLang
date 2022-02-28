@@ -3,7 +3,7 @@ import currentOrder from './reducers/currentOrder';
 
 const store = configureStore({
   reducer: {
-    currentOrder
+    currentOrder,
   },
 });
 
