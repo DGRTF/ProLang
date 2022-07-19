@@ -1,4 +1,4 @@
-import { HttpClient } from "./generate/http-client";
+import { HttpClient } from './generate/http-client';
 
 export function queryProvider<TQueryClass extends HttpClient>(queryClass: {
   new(): TQueryClass
