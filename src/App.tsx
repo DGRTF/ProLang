@@ -18,9 +18,9 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      {/* <RegistrationForm registrationUser={registration} /> */}
-      {/* <LogInForm logInUser={login} /> */}
-      {/* <ChangePasswordForm changePassword={changePassword} /> */}
+      <RegistrationForm registrationUser={registration} />
+      <LogInForm logInUser={login} />
+      <ChangePasswordForm changePassword={changePassword} />
       <ForgotPasswordForm forgotPassword={forgotPassword} />
     </div>
   );

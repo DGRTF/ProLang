@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "dsznajder.es7-react-js-snippets",
+        "streetsidesoftware.code-spell-checker-catalan",
+        "streetsidesoftware.code-spell-checker",
+        "mhutchie.git-graph"
+    ]
+}

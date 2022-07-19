@@ -7,7 +7,12 @@ import TextField from '../TextField/TextField';
 import Button from '../Button/Button';
 import Form from '../Form/Form';
 import {
-  passwordErrorMessage, passwordMaxLength, passwordMaxLengthErrorMessage, passwordMinLength, passwordMinLengthErrorMessage, passwordRegex,
+  passwordErrorMessage,
+  passwordMaxLength,
+  passwordMaxLengthErrorMessage,
+  passwordMinLength,
+  passwordMinLengthErrorMessage,
+  passwordRegex,
 } from '../common/passwordConstants';
 
 export default function RegistrationForm(props: RegistrationFormProps) {

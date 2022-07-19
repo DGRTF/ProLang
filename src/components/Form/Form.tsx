@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import Button from 'github:dgrtf/rclib';
 import ItemContainer from '../ItemContainer/ItemContainer';
 import List from '../List/List';
 import { FormProps } from './FormInterfaces';
@@ -9,7 +10,7 @@ export default function Form(props: FormProps) {
     <form className="form" onSubmit={props.onSubmit}>
       <List header={props.header}>
         {Children.toArray(props.children)
-          .map((x, i) => <ItemContainer key={i}>{x}</ItemContainer>)
+          .map((x) => x)
           .concat(
             props.buttonsSection ? (
               <ItemContainer key={-1} margin="1em 0 1em 0">
@@ -19,6 +20,7 @@ export default function Form(props: FormProps) {
               []
             ),
           )}
+        <Button />
       </List>
     </form>
   );
